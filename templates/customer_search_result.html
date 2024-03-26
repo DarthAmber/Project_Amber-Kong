@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Flight Search Results</title>
+</head>
+
+<body>
+    <a href="/customer_flight_search">back</a>
+    <h1>Flight Search Results</h1>
+    {% if error %}
+        <p style="color: red;">{{ error }}</p>
+    {% endif %}
+    {% if search %}
+        <table border="1">
+            <tr>
+                <th>Airline</th>
+                <th>Flight Number</th>
+                <th>Departure Airport</th>
+                <th>Departure Time</th>
+                <th>Arrival Airport</th>
+                <th>Arrival Time</th>
+                <th>Price</th>
+                <th>Status</th>
+                <th>Available Seats</th>
+            </tr>
+            {% for flight in search %}
+                <tr>
+                    <td>{{ flight[0] }}</td>
+                    <td>{{ flight[1] }}</td>
+                    <td>{{ flight[2] }}</td>
+                    <td>{{ flight[3] }}</td>
+                    <td>{{ flight[4] }}</td>
+                    <td>{{ flight[5] }}</td>
+                    <td>{{ flight[6] }}</td>
+                    <td>{{ flight[7] }}</td>
+                    <td>{{ flight[9] }}</td>
+                    <td>
+                        {% if flight[9] != 0 %}
+                            <form method="post" action="/customer_purchase">
+                                <input type="hidden" name="airline" value="{{ flight[0] }}">
+                                <input type="hidden" name="flight_num" value="{{ flight[1] }}">
+                                <button type="submit">Purchase</button>
+                            </form>
+                        {% else %}
+                            <form method="post" action="/customer_purchase">
+                                <input type="hidden" name="airline" value="{{ flight[0] }}">
+                                <input type="hidden" name="flight_num" value="{{ flight[1] }}">
+                            </form>
+                        {% endif %}
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <p>No flights found based on the search criteria.</p>
+    {% endif %}
+</body>
+
+</html>

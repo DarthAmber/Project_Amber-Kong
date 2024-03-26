@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Airplane</title>
+</head>
+<body>
+    <h1>Add Airplane</h1>
+    <form action="/home/StaffAddPlaneAuth" method="post">
+        <label>Airline:</label>
+        <input type="text" name="airline" value="{{ airline }}" readonly>
+        <br>
+        <label>Number of Seats:</label>
+        <input type="number" name="seats" required min="1">
+        <br>
+        <input type="submit" value="Add Airplane">
+    </form>
+</body>
+</html>

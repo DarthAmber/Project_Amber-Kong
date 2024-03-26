@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+</head>
+
+<p>
+<h1>Welcome, {{ username }}!</h1>
+
+{% if identity == 'customer' %}
+    <h2>Your Upcoming Flights:</h2>
+    <div id="warning" style="color: red;">
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {{ messages[0] }}
+        {% endif %}
+    {% endwith %}
+    </div>
+    <table border="1">
+        <tr>
+            <th>Airline</th>
+            <th>Flight Number</th>
+            <th>Departure Airport</th>
+            <th>Departure Time</th>
+            <th>Arrival Airport</th>
+            <th>Arrival Time</th>
+            <th>Status</th>
+        </tr>
+        {% for flight in upcoming %}
+            <tr>
+                <td>{{ flight[0] }}</td>
+                <td>{{ flight[1] }}</td>
+                <td>{{ flight[2] }}</td>
+                <td>{{ flight[3] }}</td>
+                <td>{{ flight[4] }}</td>
+                <td>{{ flight[5] }}</td>
+                <td>{{ flight[6] }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+
+    <br>
+    As a customer, you can
+    <p><a href="/customer_flight_search">search upcoming flights</a></p>
+    <p><a href="/customer_spending">show spending history</a></p>
+    <p><a href="/customer_flight_search">search a fight for purchasing</a></p>
+    <p><a href="/login">log out</a></p>
+
+{% elif identity == 'airline_staff' %}
+    <p>Welcome, Airline Staff {{ username }}!</p>
+    <br>
+    As a Staff, you can
+    <p><a href="/home/staff_add_airplane">add airplane</a></p>
+    <p><a href="/home/staff_add_airport">add airport</a></p>
+    <p><a href="/home/staff_view_flight">view flight</a></p>
+    <p><a href="/home/staff_view_freq_customer">view fewer freq customers</a></p>
+    <p><a href="/home/staff_view_agent">view agent statistics</a></p>
+    <p><a href="/home/staff_create_flight">create flight</a></p>
+    <p><a href="/home/staff_change_status">change flight status</a></p>
+    <p><a href="/home/staff_top_destination">top destination</a></p>
+    <p><a href="/login">log out</a></p>
+
+
+{% else %}
+    <p>Welcome, {{ username }}!</p>
+    <br>
+    As an agent, you can
+    <p><a href="/home/agent_flight_search">search for flights</a></p>
+    <p><a href="/home/agent_top_customer">explore top customers statistics</a></p>
+    <p><a href="/home/agent_view_commission">view commission</a></p>
+    <p><a href="/home/agent_view_flight">view fight</a></p>
+    <p><a href="/login">log out</a></p>
+
+
+
+{% endif %}
+</body>
+
+</html>

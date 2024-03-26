@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Agent Top Customers</title>
+</head>
+
+<body>
+    <h1>Top Customer Statistics</h1>
+
+    <h2>Top 5 Customers by Ticket Sales</h2>
+    <table border="1">
+        <tr>
+            <th>Customer Name</th>
+            <th>Phone Number</th>
+            <th>City</th>
+            <th>State</th>
+            <th>Date of Birth</th>
+            <th>Tickets Sold</th>
+        </tr>
+        {% for customer in customer_ticket %}
+            <tr>
+                <td>{{ customer[2] }}</td>
+                <td>{{ customer[3] }}</td>
+                <td>{{ customer[4] }}</td>
+                <td>{{ customer[5] }}</td>
+                <td>{{ customer[6] }}</td>
+                <td>{{ customer[1] }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+
+    <h2>Top 5 Customers by Commission Earned</h2>
+    <table border="1">
+        <tr>
+            <th>Customer Name</th>
+            <th>Phone Number</th>
+            <th>City</th>
+            <th>State</th>
+            <th>Date of Birth</th>
+            <th>Commission Earned</th>
+        </tr>
+        {% for customer in customer_commission %}
+            <tr>
+                <td>{{ customer[2] }}</td>
+                <td>{{ customer[3] }}</td>
+                <td>{{ customer[4] }}</td>
+                <td>{{ customer[5] }}</td>
+                <td>{{ customer[6] }}</td>
+                <td>{{ customer[1] }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+
+    <!-- Display the bar chart -->
+    <img src="data:image/png;base64,{{ plot_url }}" alt="Top Customer Bar Chart">
+
+</body>
+
+</html>

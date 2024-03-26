@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Agent Search Result</title>
+</head>
+<body>
+    <a href="/home/agent_flight_search">back</a>
+    <h1>Flight Search Result</h1>
+
+    {% if error %}
+        <p>{{ error }}</p>
+    {% else %}
+        {% if search %}
+            <table border="1">
+                <tr>
+                    <th>Airline Name</th>
+                    <th>Flight Number</th>
+                    <th>available Number</th>
+                    <th>Departure Airport</th>
+                    <th>Departure Time</th>
+                    <th>Arrival Airport</th>
+                    <th>Arrival Time</th>
+                    <th>Price</th>
+                    <th>Status</th>
+                    <th>AirPlane ID</th>
+                    <th>Action</th> <!-- New column for the Buy button -->
+                </tr>
+                {% for flight in search %}
+                    <tr>
+                        <td>{{ flight[0] }}</td>
+                        <td>{{ flight[1] }}</td>
+                        <td>{{ flight[9] }}</td>
+                        <td>{{ flight[2] }}</td>
+                        <td>{{ flight[3] }}</td>
+                        <td>{{ flight[4] }}</td>
+                        <td>{{ flight[5] }}</td>
+                        <td>{{ flight[6] }}</td>
+                        <td>{{ flight[7] }}</td>
+                        <td>{{ flight[8] }}</td>
+                        <td>
+                            {% if flight[9] != 0 %}
+                                <form method="post" action="/home/agent_search/agent_select_customer">
+                                    <input type="hidden" name="airline" value="{{ flight[0] }}">
+                                    <input type="hidden" name="flight_num" value="{{ flight[1] }}">
+                                    <button type="submit">Purchase</button>
+                                </form>
+                            {% else %}
+                                <form method="post" action="/home/agent_search/agent_select_customer">
+                                    <input type="hidden" name="airline" value="{{ flight[0] }}">
+                                    <input type="hidden" name="flight_num" value="{{ flight[1] }}">
+                                </form>
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% endfor %}
+            </table>
+        {% else %}
+            <p>No flights found.</p>
+        {% endif %}
+    {% endif %}
+    <p>
+        <a href="/home">Back to Homepage</a>
+    </p>
+</body>
+</html>

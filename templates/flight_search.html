@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Customer Flight Search</title>
+</head>
+
+<body>
+    <h1>Customer Flight Search</h1>
+
+    <form action="/search" method="POST">
+        <label for="departure_city">Departure City:</label><br>
+        <select name="departure_city" id="departure_city">
+            <option value="all">All</option>
+            {% for city in departure_city %}
+                <option value="{{ city[0] }}">{{ city[0] }}</option>
+            {% endfor %}
+        </select><br><br>
+
+        <label for="departure_airport">Departure Airport:</label><br>
+        <select name="departure_airport" id="departure_airport">
+            <option value="all">All</option>
+            {% for airport in departure_airport %}
+                <option value="{{ airport[0] }}">{{ airport[0] }}</option>
+            {% endfor %}
+        </select><br><br>
+
+        <label for="arrival_city">Arrival City:</label><br>
+        <select name="arrival_city" id="arrival_city">
+            <option value="all">All</option>
+            {% for city in arrival_city %}
+                <option value="{{ city[0] }}">{{ city[0] }}</option>
+            {% endfor %}
+        </select><br><br>
+
+        <label for="arrival_airport">Arrival Airport:</label><br>
+        <select name="arrival_airport" id="arrival_airport">
+            <option value="all">All</option>
+            {% for airport in arrival_airport %}
+                <option value="{{ airport[0] }}">{{ airport[0] }}</option>
+            {% endfor %}
+        </select><br><br>
+
+        <label for="flight_date">Flight Date:</label><br>
+        <input type="date" id="flight_date" name="flight_date"><br><br>
+
+        <input type="submit" value="Search Flights">
+    </form>
+    <p><a href="/">back to index page</a></p>
+</body>
+
+</html>

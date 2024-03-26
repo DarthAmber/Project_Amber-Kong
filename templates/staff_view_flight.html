@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>View Flights</title>
+</head>
+<body>
+    <h1>View Flights</h1>
+    {% if error %}
+        <p style="color: red;">{{ error }}</p>
+    {% endif %}
+    <form action="/home/staff_view_flight/staff_search_result" method="post">
+        <label>Airline:</label>
+        <input type="text" name="airline" value="{{ airline }}" readonly>
+        <br>
+        <label>Departure City:</label>
+        <select name="departure_city">
+            <option value="all">All</option>
+            {% for city in departure_city %}
+                <option value="{{ city[0] }}">{{ city[0] }}</option>
+            {% endfor %}
+        </select>
+        <br>
+        <label>Departure Airport:</label>
+        <select name="departure_airport">
+            <option value="all">All</option>
+            {% for airport in departure_airport %}
+                <option value="{{ airport[0] }}">{{ airport[0] }}</option>
+            {% endfor %}
+        </select>
+        <br>
+        <label>Arrival City:</label>
+        <select name="arrival_city">
+            <option value="all">All</option>
+            {% for city in arrival_city %}
+                <option value="{{ city[0] }}">{{ city[0] }}</option>
+            {% endfor %}
+        </select>
+        <br>
+        <label>Arrival Airport:</label>
+        <select name="arrival_airport">
+            <option value="all">All</option>
+            {% for airport in arrival_airport %}
+                <option value="{{ airport[0] }}">{{ airport[0] }}</option>
+            {% endfor %}
+        </select>
+        <br>
+        <label>Starting Date:</label>
+        <input type="date" name="starting_date">
+        <br>
+        <label>Ending Date:</label>
+        <input type="date" name="ending_date">
+        <br>
+        <input type="submit" value="Search Flights">
+    </form>
+
+    <h2>Upcoming Flights</h2>
+    <table border="1">
+        <tr>
+            <th>Flight Number</th>
+            <th>Departure Airport</th>
+            <th>Arrival Airport</th>
+            <th>Departure Time</th>
+        </tr>
+        {% for flight in flights %}
+            <tr>
+                <td>{{ flight[1] }}</td>
+                <td>{{ flight[2] }}</td>
+                <td>{{ flight[3] }}</td>
+                <td>{{ flight[4] }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

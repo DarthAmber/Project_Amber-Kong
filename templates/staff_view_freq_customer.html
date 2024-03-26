@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>View Most Frequent Customer</title>
+</head>
+<body>
+    <h1>Most Frequent Customer</h1>
+    <table border="1">
+        <tr>
+            <th>Email</th>
+            <th>Name</th>
+            <th>City</th>
+            <th>State</th>
+            <th>Phone Number</th>
+            <th>Date of Birth</th>
+        </tr>
+        {% for customer in most_freq_customer %}
+            <tr>
+                <td>{{ customer[0] }}</td>
+                <td>{{ customer[1] }}</td>
+                <td>{{ customer[2] }}</td>
+                <td>{{ customer[3] }}</td>
+                <td>{{ customer[4] }}</td>
+                <td>{{ customer[5] }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

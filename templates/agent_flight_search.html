@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Agent Flight Search</title>
+</head>
+<body>
+<h1>Flight Search</h1>
+<div id="warning" style="color: red;">
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {{ messages[0] }}
+        {% endif %}
+    {% endwith %}
+</div>
+<form action="/home/agent_search" method="post">
+    <label>Departure City:</label>
+    <select name="departure_city">
+        <option value="all">All</option>
+        {% for city in departure_city %}
+            <option value="{{ city[0] }}">{{ city[0] }}</option>
+        {% endfor %}
+    </select>
+    <br>
+    <label>Departure Airport:</label>
+    <select name="departure_airport">
+        <option value="all">All</option>
+        {% for airport in departure_airport %}
+            <option value="{{ airport[0] }}">{{ airport[0] }}</option>
+        {% endfor %}
+    </select>
+    <br>
+    <label>Arrival City:</label>
+    <select name="arrival_city">
+        <option value="all">All</option>
+        {% for city in arrival_city %}
+            <option value="{{ city[0] }}">{{ city[0] }}</option>
+        {% endfor %}
+    </select>
+    <br>
+    <label>Arrival Airport:</label>
+    <select name="arrival_airport">
+        <option value="all">All</option>
+        {% for airport in arrival_airport %}
+            <option value="{{ airport[0] }}">{{ airport[0] }}</option>
+        {% endfor %}
+    </select>
+    <br>
+    <label>Departure Date:</label>
+    <input type="date" name="flight_date">
+    <br>
+    <input type="submit" value="Search Flights">
+</form>
+
+</body>
+</html>

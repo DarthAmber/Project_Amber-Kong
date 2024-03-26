@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Search Result</title>
+</head>
+<body>
+    <h1>Flight Search Result</h1>
+    {% if search %}
+        <table border="1">
+            <tr>
+                <th>Flight Number</th>
+                <th>Departure Airport</th>
+                <th>Arrival Airport</th>
+                <th>Departure Time</th>
+                <th>Action</th>  <!-- Add this column for the button -->
+            </tr>
+            {% for flight in search %}
+                <tr>
+                    <td>{{ flight[1] }}</td>
+                    <td>{{ flight[2] }}</td>
+                    <td>{{ flight[3] }}</td>
+                    <td>{{ flight[4] }}</td>
+                    <td>
+                        <form action="/home/staff_view_flight/staff_view_customer" method="post">
+                            <input type="hidden" name="airline" value="{{ flight[0] }}">
+                            <input type="hidden" name="flight_number" value="{{ flight[1] }}">
+                            <input type="submit" value="View Customers">
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <p>No results found.</p>
+    {% endif %}
+</body>
+</html>

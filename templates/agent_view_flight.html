@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Agent View Flights</title>
+</head>
+
+<body>
+<h1>Agent's Upcoming Flights</h1>
+
+<h2>Upcoming Flights Purchased by Agent</h2>
+<table border="1">
+    <tr>
+        <th>Airline</th>
+        <th>Flight Number</th>
+        <th>Departure Airport</th>
+        <th>Departure Time</th>
+        <th>Arrival Airport</th>
+        <th>Arrival Time</th>
+        <th>Price</th>
+        <th>Status</th>
+        <th>Airplane ID</th>
+        <th>Customer Email</th>
+    </tr>
+    {% for flight in flights %}
+        <tr>
+            <td>{{ flight[0] }}</td>
+            <td>{{ flight[1] }}</td>
+            <td>{{ flight[2] }}</td>
+            <td>{{ flight[3] }}</td>
+            <td>{{ flight[4] }}</td>
+            <td>{{ flight[5] }}</td>
+            <td>{{ flight[6] }}</td>
+            <td>{{ flight[7] }}</td>
+            <td>{{ flight[8] }}</td>
+            <td>{{ flight[9] }}</td>
+        </tr>
+    {% endfor %}
+</table>
+
+<h2>Customized Flight Research</h2>
+<form action="/home/agent_view_flight/agent_customize_view" method="POST">
+    <label for="arrival_airport">Select Arrival Airport:</label>
+    <select name="arrival_airport" id="arrival_airport">
+        {% for airport in arrival_airport %}
+            <option value="{{ airport[0] }}">{{ airport[0] }}</option>
+        {% endfor %}
+    </select><br><br>
+
+    <label for="departure_airport">Select Departure Airport:</label>
+    <select name="departure_airport" id="departure_airport">
+        {% for airport in departure_airport %}
+            <option value="{{ airport[0] }}">{{ airport[0] }}</option>
+        {% endfor %}
+    </select><br><br>
+
+    <label for="arrival_city">Select Arrival City:</label>
+    <select name="arrival_city" id="arrival_city">
+        {% for city in arrival_city %}
+            <option value="{{ city[0] }}">{{ city[0] }}</option>
+        {% endfor %}
+    </select><br><br>
+
+    <label for="departure_city">Select Departure City:</label>
+    <select name="departure_city" id="departure_city">
+        {% for city in departure_city %}
+            <option value="{{ city[0] }}">{{ city[0] }}</option>
+        {% endfor %}
+    </select><br><br>
+
+    <label>ending_date:</label>
+    <input name="ending_date" type="date">
+    <br><br>
+
+    <label>starting_date:</label>
+    <input name="starting_date" type="date">
+    <br><br>
+
+    <label for="flight_number">Select Flight Number:</label>
+    <select name="flight_number" id="flight_number">
+        {% for num in flight_number %}
+            <option value="{{ num[0] }}">{{ num[0] }}</option>
+        {% endfor %}
+    </select><br><br>
+
+    <input type="submit" value="Search Flights">
+</form>
+
+</body>
+
+</html>

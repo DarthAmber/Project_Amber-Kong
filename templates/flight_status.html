@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Flight Status</title>
+</head>
+<body>
+    <h1>Flight Status Check</h1>
+    {% if error %}
+        <p style="color: red;">{{ error }}</p>
+    {% endif %}
+    <form action="/check_status" method="post">
+        <label>Flight Number:</label>
+        <input type="text" name="flight_number">
+        <br>
+        <label>Arrival Date:</label>
+        <input type="date" name="arrival_date">
+        <br>
+        <label>Departure Date:</label>
+        <input type="date" name="departure_date">
+        <br>
+        <input type="submit" value="Check Status">
+    </form>
+</body>
+</html>

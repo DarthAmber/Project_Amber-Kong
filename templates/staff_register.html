@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Staff Register</title>
+</head>
+<body>
+    <h1>Staff Registration</h1>
+    {% if error %}
+        <p style="color: red;">{{ error }}</p>
+    {% endif %}
+    <form action="/staffRegisterAuth" method="post">
+        <label>Email:</label>
+        <input type="text" name="username" required>
+        <br>
+        <label>Password:</label>
+        <input type="password" name="password" required>
+        <br>
+        <label>First Name:</label>
+        <input type="text" name="first name" required>
+        <br>
+        <label>Last Name:</label>
+        <input type="text" name="last name" required>
+        <br>
+        <label>Birthday:</label>
+        <input type="date" name="birthday" required>
+        <br>
+        <label>Select Airline:</label>
+        <select name="airline" required>
+            <option value="" disabled selected>Select an airline</option>
+            {% for airline in airline_list %}
+                <option value="{{ airline }}">{{ airline }}</option>
+            {% endfor %}
+        </select>
+        <br>
+        <input type="submit" value="Register">
+    </form>
+</body>
+</html>

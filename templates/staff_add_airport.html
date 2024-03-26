@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Airport</title>
+</head>
+<body>
+<a href="/home">home page</a>
+<h1>Airplane Added</h1>
+<div id="warning" style="color: red;">
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {{ messages[0] }}
+        {% else %}
+            <p>The airplane has been successfully added with the following details:</p>
+        {% endif %}
+    {% endwith %}
+</div>
+<form action="/home/StaffAddAirportAuth" method="post">
+    <label>Airport Name:</label>
+    <input type="text" name="airport_name" required>
+    <br>
+    <label>City:</label>
+    <input type="text" name="city" required>
+    <br>
+    <input type="submit" value="Add Airport">
+</form>
+</body>
+</html>

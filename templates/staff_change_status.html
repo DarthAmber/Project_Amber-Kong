@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Change Flight Status</title>
+</head>
+<body>
+    <a href="/home">home page</a>
+    <h1>Change Flight Status</h1>
+
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+        <div id="warning" style="color: red;">
+            {{ messages[0] }}
+        </div>
+    {% endif %}
+{% endwith %}
+
+    {% if confirm %}
+        <p>Current Flight Status: {{ status }}</p>
+        <form action="/home/StaffSetFinalStatus" method="post">
+            <input type="hidden" name="airline" value="{{ airline }}">
+            <input type="hidden" name="flight_num" value="{{ flight_num }}">
+            <label for="selected_status">Select New Status:</label>
+            <select id="selected_status" name="selected_status">
+                <option value="Upcoming">Upcoming</option>
+                <option value="Delayed">Delayed</option>
+                <option value="Cancelled">Cancelled</option>
+            </select>
+            <input type="submit" value="Update Status">
+        </form>
+    {% else %}
+        <form action="/home/StaffConfirmStatus" method="post">
+            <input type="hidden" name="airline" value="{{ airline }}">
+            <label for="flight_num">Select Flight Number:</label>
+            <select id="flight_num" name="flight_num">
+                {% for num in flight_num %}
+                    <option value="{{ num[0] }}">{{ num[0] }}</option>
+                {% endfor %}
+            </select>
+            <input type="submit" value="Confirm">
+        </form>
+    {% endif %}
+</body>
+</html>

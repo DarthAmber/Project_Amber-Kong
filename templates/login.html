@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+</head>
+<body>
+    <h1>Login</h1>
+    {% if error %}
+        <p style="color: red;">{{ error }}</p>
+    {% endif %}
+    <form action="/loginAuth" method="post">
+        <label>Identity:</label>
+        <select name="identity" required>
+            <option value="customer">Customer</option>
+            <option value="booking_agent">Booking Agent</option>
+            <option value="airline_staff">Airline Staff</option>
+        </select>
+        <br>
+        <label>Username:</label>
+        <input type="text" name="username" required>
+        <br>
+        <label>Password:</label>
+        <input type="password" name="password" required>
+        <br>
+        <input type="submit" value="Login">
+    </form>
+</body>
+</html>

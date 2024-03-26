@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Customer Register</title>
+</head>
+<body>
+    <h1>Customer Registration</h1>
+    {% if error %}
+        <p style="color: red;">{{ error }}</p>
+    {% endif %}
+    <form action="/customerRegisterAuth" method="post">
+        <label>Email:</label>
+        <input type="text" name="username" required>
+        <br>
+        <label>Password:</label>
+        <input type="password" name="password" required>
+        <br>
+        <label>Building Number:</label>
+        <input type="text" name="building number" required>
+        <br>
+        <label>Street:</label>
+        <input type="text" name="street" required>
+        <br>
+        <label>City:</label>
+        <input type="text" name="city" required>
+        <br>
+        <label>State:</label>
+        <input type="text" name="state" required>
+        <br>
+        <label>Name:</label>
+        <input type="text" name="name" required>
+        <br>
+        <label>Phone:</label>
+        <input type="tel" name="phone" required>
+        <br>
+        <label>Birthday:</label>
+        <input type="date" name="birthday" required>
+        <br>
+        <label>Passport Number:</label>
+        <input type="text" name="passport num" required>
+        <br>
+        <label>Passport Expiration Date:</label>
+        <input type="date" name="passport expir" required>
+        <br>
+        <label>Passport Country:</label>
+        <input type="text" name="passport country" required>
+        <br>
+        <input type="submit" value="Register">
+    </form>
+</body>
+</html>

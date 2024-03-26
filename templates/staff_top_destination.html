@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Top Destinations</title>
+</head>
+<body>
+<a href="/home">home page</a>
+<h1>Top Destinations</h1>
+
+<h2>Top Destinations in the Last 3 Months</h2>
+<ul>
+    {% for dest in destination_month %}
+        <li>{{ dest[1] }} ({{ dest[0] }})</li>
+    {% endfor %}
+</ul>
+
+<h2>Top Destinations in the Last Year</h2>
+<ul>
+    {% for dest in destination_year %}
+        <li>{{ dest[1] }} ({{ dest[0] }})</li>
+    {% endfor %}
+</ul>
+</body>
+</html>

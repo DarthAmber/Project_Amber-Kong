@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>View Agent Statistics</title>
+</head>
+<body>
+    <h1>Agent Statistics</h1>
+
+    <h2>Top Agents in the Past Month (Based on Tickets Sold)</h2>
+    <table border="1">
+        <tr>
+            <th>Email</th>
+            <th>Agent ID</th>
+            <th>Tickets Sold</th>
+        </tr>
+        {% for agent in agent_ticket_month %}
+            <tr>
+                <td>{{ agent[0] }}</td>
+                <td>{{ agent[1] }}</td>
+                <td>{{ agent[2] }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+
+    <h2>Top Agents in the Past Year (Based on Tickets Sold)</h2>
+    <table border="1">
+        <tr>
+            <th>Email</th>
+            <th>Agent ID</th>
+            <th>Tickets Sold</th>
+        </tr>
+        {% for agent in agent_ticket_year %}
+            <tr>
+                <td>{{ agent[0] }}</td>
+                <td>{{ agent[1] }}</td>
+                <td>{{ agent[2] }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+
+    <h2>Top Agents in the Past Year (Based on Commission Earned)</h2>
+    <table border="1">
+        <tr>
+            <th>Email</th>
+            <th>Agent ID</th>
+            <th>Commission Earned</th>
+        </tr>
+        {% for agent in agent_commission %}
+            <tr>
+                <td>{{ agent[0] }}</td>
+                <td>{{ agent[1] }}</td>
+                <td>{{ agent[2] }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

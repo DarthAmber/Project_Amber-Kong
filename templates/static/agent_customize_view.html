@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Customized Flight Search Results</title>
+</head>
+
+<body>
+    <h1>Customized Flight Search Results</h1>
+
+    {% if search %}
+        <table border="1">
+            <tr>
+                <th>Airline</th>
+                <th>Flight Number</th>
+                <th>Departure Airport</th>
+                <th>Departure Time</th>
+                <th>Arrival Airport</th>
+                <th>Arrival Time</th>
+                <th>Price</th>
+                <th>Status</th>
+                <th>Airplane ID</th>
+                <th>Customer Email</th>
+            </tr>
+            {% for flight in search %}
+                <tr>
+                    <td>{{ flight[0] }}</td>
+                    <td>{{ flight[1] }}</td>
+                    <td>{{ flight[2] }}</td>
+                    <td>{{ flight[3] }}</td>
+                    <td>{{ flight[4] }}</td>
+                    <td>{{ flight[5] }}</td>
+                    <td>{{ flight[6] }}</td>
+                    <td>{{ flight[7] }}</td>
+                    <td>{{ flight[8] }}</td>
+                    <td>{{ flight[9] }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <p>No flights found based on the search criteria.</p>
+    {% endif %}
+</body>
+
+</html>
